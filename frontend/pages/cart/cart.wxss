@@ -1,0 +1,117 @@
+.page {
+  padding: 20rpx 20rpx 140rpx 20rpx;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.cart-info {
+  flex: 1;
+}
+
+.cart-name {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.cart-price {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 8rpx;
+}
+
+.cart-actions {
+  display: flex;
+  align-items: center;
+  margin-right: 24rpx;
+}
+
+.qty-btn {
+  width: 52rpx;
+  height: 52rpx;
+  line-height: 48rpx;
+  text-align: center;
+  border-radius: 50%;
+  border: 1rpx solid #e64a19;
+  color: #e64a19;
+  font-size: 36rpx;
+}
+
+.qty {
+  min-width: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.cart-subtotal {
+  width: 120rpx;
+  text-align: right;
+  color: #e64a19;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.cart-remove {
+  margin-left: 20rpx;
+  color: #999999;
+  font-size: 24rpx;
+}
+
+.remark-card {
+  display: flex;
+  align-items: center;
+}
+
+.remark-label {
+  width: 100rpx;
+  color: #666666;
+}
+
+.remark-input {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.clear-btn {
+  text-align: center;
+  color: #999999;
+  font-size: 26rpx;
+  padding: 20rpx 0;
+}
+
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 110rpx;
+  background-color: #ffffff;
+  border-top: 1rpx solid #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+.bottom-total {
+  font-size: 28rpx;
+}
+
+.bottom-total .price {
+  font-size: 36rpx;
+}
+
+.submit-btn {
+  width: 240rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  font-size: 30rpx;
+  margin: 0;
+}

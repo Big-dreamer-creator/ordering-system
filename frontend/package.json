@@ -1,0 +1,12 @@
+{
+  "name": "ordering-system-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "课程设计：简易点餐系统微信小程序（原生开发）",
+  "scripts": {
+    "check": "bun run scripts/check.js"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^5.2.3"
+  }
+}

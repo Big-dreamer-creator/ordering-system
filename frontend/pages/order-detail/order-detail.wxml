@@ -1,0 +1,46 @@
+<view class="page" wx:if="{{order}}">
+  <view class="card status-card">
+    <view class="status-text">{{order.status}}</view>
+    <view class="status-tip" wx:if="{{order.status === '已提交'}}">商家正在处理中</view>
+    <view class="status-tip" wx:elif="{{order.status === '已取消'}}">订单已取消</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">菜品明细</view>
+    <view class="item-line" wx:for="{{order.items}}" wx:key="id">
+      <view class="item-left">
+        <view class="item-name">{{item.dish_name}}</view>
+        <view class="item-price">¥{{item.priceText}} x {{item.quantity}}</view>
+      </view>
+      <view class="item-subtotal">¥{{item.subtotalText}}</view>
+    </view>
+    <view class="total-line">
+      <text>合计</text>
+      <text class="price">¥{{order.totalText}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">订单信息</view>
+    <view class="info-line">
+      <text class="info-label">订单编号</text>
+      <text class="info-value">{{order.order_no}}</text>
+    </view>
+    <view class="info-line">
+      <text class="info-label">下单时间</text>
+      <text class="info-value">{{order.timeText}}</text>
+    </view>
+    <view class="info-line">
+      <text class="info-label">备注</text>
+      <text class="info-value">{{order.remark || '无'}}</text>
+    </view>
+  </view>
+
+  <button
+    class="btn-plain cancel-btn"
+    wx:if="{{order.status === '已提交'}}"
+    bindtap="onCancel"
+  >取消订单</button>
+</view>
+
+<view class="empty" wx:else>{{loading ? '加载中...' : '订单不存在'}}</view>

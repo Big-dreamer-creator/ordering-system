@@ -1,0 +1,45 @@
+<view class="page">
+  <view class="cart-list" wx:if="{{items.length > 0}}">
+    <view class="cart-item" wx:for="{{items}}" wx:key="dish_id">
+      <view class="cart-info">
+        <view class="cart-name">{{item.name}}</view>
+        <view class="cart-price">¥{{item.priceText}}</view>
+      </view>
+
+      <view class="cart-actions">
+        <view class="qty-btn" bindtap="onMinus" data-id="{{item.dish_id}}">-</view>
+        <text class="qty">{{item.quantity}}</text>
+        <view class="qty-btn" bindtap="onPlus" data-id="{{item.dish_id}}">+</view>
+      </view>
+
+      <view class="cart-subtotal">¥{{item.subtotalText}}</view>
+      <view class="cart-remove" bindtap="onRemove" data-id="{{item.dish_id}}">删除</view>
+    </view>
+
+    <view class="card remark-card">
+      <view class="remark-label">备注</view>
+      <input
+        class="remark-input"
+        placeholder="口味、忌口等要求（选填）"
+        value="{{remark}}"
+        bindinput="onRemarkInput"
+      />
+    </view>
+
+    <view class="clear-btn" bindtap="onClear">清空购物车</view>
+  </view>
+
+  <view class="empty" wx:else>购物车还是空的，去点餐吧</view>
+
+  <view class="bottom-bar" wx:if="{{items.length > 0}}">
+    <view class="bottom-total">
+      共 {{count}} 件，合计
+      <text class="price">¥{{totalText}}</text>
+    </view>
+    <button
+      class="btn-primary submit-btn"
+      bindtap="onSubmit"
+      disabled="{{submitting}}"
+    >{{submitting ? '提交中...' : '提交订单'}}</button>
+  </view>
+</view>

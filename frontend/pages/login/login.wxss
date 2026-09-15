@@ -1,0 +1,79 @@
+.page {
+  padding: 80rpx 48rpx;
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+
+.logo {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 auto 24rpx;
+  border-radius: 32rpx;
+  background-color: #e64a19;
+  color: #ffffff;
+  font-size: 64rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 8rpx;
+}
+
+.form {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 8rpx 24rpx;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.field:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 140rpx;
+  color: #666666;
+  font-size: 28rpx;
+}
+
+.input {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.submit {
+  margin-top: 48rpx;
+}
+
+.switch {
+  text-align: center;
+  margin-top: 32rpx;
+  color: #e64a19;
+  font-size: 28rpx;
+}
+
+.tip {
+  text-align: center;
+  margin-top: 40rpx;
+  color: #999999;
+  font-size: 24rpx;
+}

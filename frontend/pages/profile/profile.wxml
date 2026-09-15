@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="card user-card">
+    <view class="avatar">{{user ? user.initial : ''}}</view>
+    <view class="user-info">
+      <view class="user-name">{{user ? user.nickname : ''}}</view>
+      <view class="user-phone">{{user && user.phone ? user.phone : '暂无手机号'}}</view>
+    </view>
+    <view class="edit-btn" bindtap="onEdit">编辑</view>
+  </view>
+
+  <view class="card stats-card">
+    <view class="stat">
+      <view class="stat-value">{{stats.total}}</view>
+      <view class="stat-label">订单总数</view>
+    </view>
+    <view class="stat">
+      <view class="stat-value">¥{{stats.amount}}</view>
+      <view class="stat-label">累计消费</view>
+    </view>
+    <view class="stat">
+      <view class="stat-value">{{stats.active}}</view>
+      <view class="stat-label">进行中</view>
+    </view>
+  </view>
+
+  <view class="card link" bindtap="onClearCache">
+    <text>清空本地购物车缓存</text>
+  </view>
+
+  <view class="card link logout" bindtap="onLogout">
+    <text>退出登录</text>
+  </view>
+</view>

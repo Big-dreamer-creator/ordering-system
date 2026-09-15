@@ -1,0 +1,76 @@
+<view class="page">
+  <view class="brand">
+    <view class="logo">点</view>
+    <view class="title">简易点餐系统</view>
+    <view class="subtitle">课程设计 Demo</view>
+  </view>
+
+  <view class="form">
+    <view class="field">
+      <text class="label">用户名</text>
+      <input
+        class="input"
+        value="{{username}}"
+        bindinput="onInput"
+        data-field="username"
+        placeholder="请输入用户名"
+      />
+    </view>
+    <view class="field">
+      <text class="label">密码</text>
+      <input
+        class="input"
+        password
+        value="{{password}}"
+        bindinput="onInput"
+        data-field="password"
+        placeholder="请输入密码"
+      />
+    </view>
+
+    <block wx:if="{{mode === 'register'}}">
+      <view class="field">
+        <text class="label">昵称</text>
+        <input
+          class="input"
+          value="{{nickname}}"
+          bindinput="onInput"
+          data-field="nickname"
+          placeholder="选填，默认与用户名相同"
+        />
+      </view>
+      <view class="field">
+        <text class="label">手机号</text>
+        <input
+          class="input"
+          type="number"
+          value="{{phone}}"
+          bindinput="onInput"
+          data-field="phone"
+          placeholder="选填"
+        />
+      </view>
+    </block>
+  </view>
+
+  <button
+    class="btn-primary submit"
+    bindtap="onSubmit"
+    disabled="{{submitting}}"
+  >{{submitting ? '请稍候...' : (mode === 'login' ? '登录' : '注册')}}</button>
+
+  <view class="switch">
+    <text
+      wx:if="{{mode === 'login'}}"
+      bindtap="onSwitchMode"
+      data-mode="register"
+    >没有账号？去注册</text>
+    <text
+      wx:else
+      bindtap="onSwitchMode"
+      data-mode="login"
+    >已有账号？去登录</text>
+  </view>
+
+  <view class="tip">默认演示账号：demo / 123456</view>
+</view>

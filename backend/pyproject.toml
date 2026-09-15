@@ -1,0 +1,19 @@
+[project]
+name = "ordering-system-backend"
+version = "1.0.0"
+description = "课程设计：简易点餐系统后端（FastAPI + SQLAlchemy + MySQL）"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.115.6",
+    "uvicorn[standard]==0.34.0",
+    "sqlalchemy==2.0.36",
+    "pymysql==1.1.1",
+    "pydantic==2.10.4",
+    "python-dotenv==1.0.1",
+    "cryptography>=50.0.1",
+]
+
+[tool.uv]
+# 这不是一个需要被打包安装的库，而是一个直接运行的应用
+package = false
