@@ -4,6 +4,54 @@ function getBaseUrl() {
   return (app && app.globalData && app.globalData.baseUrl) || 'http://127.0.0.1:8000/api'
 }
 
+// 从后端返回体里取出错误信息（detail 可能是字符串或数组）
+function pickDetail(data) {
+  if (!data || !data.detail) {
+    return ''
+  }
+  const detail = data.detail
+  if (typeof detail === 'string') {
+    return detail
+  }
+  if (Array.isArray(detail)) {
+    return detail
+      .map((item) => item && item.msg)
+      .filter(Boolean)
+      .join('；')
+  }
+  return ''
+}
+
+// 按状态码做不同处理
+function handleError(statusCode, data) {
+  const detail = pickDetail(data)
+
+  if (statusCode === 401) {
+    const app = getApp()
+    if (app) {
+      app.clearUser()
+    }
+    setTimeout(() => {
+      wx.reLaunch({ url: '/pages/login/login' })
+    }, 800)
+    return new Error(detail || '登录已失效，请重新登录')
+  }
+
+  if (statusCode === 403) {
+    return new Error(detail || '没有操作权限')
+  }
+
+  if (statusCode === 404) {
+    return new Error(detail || '请求的资源不存在')
+  }
+
+  if (statusCode >= 500) {
+    return new Error('服务器开小差了，请稍后重试')
+  }
+
+  return new Error(detail || '请求失败')
+}
+
 function request(method, url, data) {
   return new Promise((resolve, reject) => {
     wx.request({
@@ -15,8 +63,7 @@ function request(method, url, data) {
         if (res.statusCode >= 200 && res.statusCode < 300) {
           resolve(res.data)
         } else {
-          const detail = res.data && res.data.detail
-          reject(new Error(typeof detail === 'string' ? detail : '请求失败'))
+          reject(handleError(res.statusCode, res.data))
         }
       },
       fail() {

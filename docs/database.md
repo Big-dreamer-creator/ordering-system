@@ -88,3 +88,27 @@ users (用户)
 
 - 1 个演示用户（`username=demo`，`password=123456`）
 - 10 个菜品，覆盖热菜、凉菜、主食、饮品四类
+
+## 升级已有数据库
+
+如果之前已经建过库，`users` 表还没有 `username` / `password_hash` 字段，
+后端启动会报 `Unknown column 'users.username' in 'field list'`。
+
+原因是 `Base.metadata.create_all()` 只会创建缺失的表，**不会修改已存在的表**。
+
+两种处理方式：
+
+**方式一：直接重建（简单，会清空数据）**
+
+```bash
+mysql -u root -p < database/init.sql
+```
+
+**方式二：保留数据，执行增量迁移（只需执行一次）**
+
+```bash
+mysql -u root -p --default-character-set=utf8mb4 < database/migrate_add_auth.sql
+```
+
+迁移脚本会：新增 `username` / `password_hash` 两列 → 给老用户补用户名 →
+把 id=1 设为演示账号 `demo / 123456` → 给 `username` 加唯一索引。

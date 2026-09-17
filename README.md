@@ -40,6 +40,10 @@ mysql -u root -p < database/init.sql
 
 （也可以跳过这一步，后端首次启动会自动建表并写入演示数据）
 
+> 如果之前已经建过库、启动报 `Unknown column 'users.username'`，
+> 说明旧表没同步。执行 `database/init.sql` 重建，
+> 或执行 `database/migrate_add_auth.sql` 做增量迁移（保留数据）。
+
 ### 2. 启动后端（uv 管理）
 
 ```bash
